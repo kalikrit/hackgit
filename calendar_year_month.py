@@ -3,16 +3,16 @@ import html
 import calendar
 from datetime import datetime
 
-# индексный раут - localhost:8080/
+# РёРЅРґРµРєСЃРЅС‹Р№ СЂР°СѓС‚ - localhost:8080/
 @bottle.route('/')
 def index():
     c = calendar.HTMLCalendar()
     now = datetime.now()
     return c.formatyearpage(now.year, width=3)
 
-# год localhost:8080/year/<year>
-# year - чило от 1900-3001
-# если не в этом интервале, то будет отображен текущий год	
+# РіРѕРґ localhost:8080/year/<year>
+# year - С‡РёР»Рѕ РѕС‚ 1900-3001
+# РµСЃР»Рё РЅРµ РІ СЌС‚РѕРј РёРЅС‚РµСЂРІР°Р»Рµ, С‚Рѕ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶РµРЅ С‚РµРєСѓС‰РёР№ РіРѕРґ	
 @bottle.route('/year/<year>')
 def print_year(year=None):
     c = calendar.HTMLCalendar()
@@ -28,10 +28,11 @@ def print_year(year=None):
         year = now.year
     return c.formatyearpage(year, width=3)
 
-# месяц localhost:8080/month/<month>
-# календарь на месяц текущего года
-# месяц в интервале [1-12]
-# если не этом интервале будет отображен текущий месяц текущего года
+# РјРµСЃСЏС† localhost:8080/month/<month>
+# РєР°Р»РµРЅРґР°СЂСЊ РЅР° РјРµСЃСЏС† С‚РµРєСѓС‰РµРіРѕ РіРѕРґР°
+# РјРµСЃСЏС† РІ РёРЅС‚РµСЂРІР°Р»Рµ [1-12]
+# РµСЃР»Рё РЅРµ СЌС‚РѕРј РёРЅС‚РµСЂРІР°Р»Рµ Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶РµРЅ С‚РµРєСѓС‰РёР№ РјРµСЃСЏС† С‚РµРєСѓС‰РµРіРѕ РіРѕРґР°
+# todo: СЃРґРµР»Р°С‚СЊ С‡С‚РѕР±С‹ СЂР°Р±РѕС‚Р°Р»Р° РєРѕРјР±РёРЅР°С†РёСЏ РіРѕРґ/РјРµСЃСЏС† РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РјРµСЃСЏС†Р° Р»СЋР±РѕРіРѕ РіРѕРґР°
 @bottle.route('/month/<month>')
 def print_month(month=None):
     c = calendar.HTMLCalendar()
